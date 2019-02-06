@@ -1,0 +1,45 @@
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Rodrigo Borges">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}">
+	<link rel="icon" type= "image/png" href="{% static 'img/favicon.png' %}" />
+    {% block css %}
+    {% endblock %} 
+</head>
+<body>
+    <div class="row">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light border-bottom">
+            <a class="navbar-brand" href="{{ base_path }}"> <img src="{% static 'img/logo.png' %}" /></a>
+        </nav>
+    </div>
+
+    {% block body %}
+    {% endblock %} 
+	
+	<footer>
+		<span>Desenvolvido por Rodrigo Soares Borges</span>
+	</footer>
+    
+
+	<script type="text/javascript"> const main_url = '{{ base_path }}'; </script>
+	<script type="text/javascript" src="{% static 'js/bibliotecas/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bibliotecas/jquery/validator/jquery.validate.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bibliotecas/jquery/validator/localization/messages_pt_BR.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bibliotecas/popper.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bibliotecas/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bibliotecas/jquery/jquery.mask.min.js' %}"></script>
+	<script src="{% static 'js/bibliotecas/bootstrap-select.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bibliotecas/defaults-pt_BR.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/views/consulta.js' %}"></script>
+    {% block js %}
+    {% endblock %} 
+</body>
+</html>

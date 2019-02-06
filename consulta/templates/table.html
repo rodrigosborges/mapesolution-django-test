@@ -1,0 +1,48 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nome do Médico</th>
+            <th>Número da Guia</th>
+            <th>Data da Consulta</th>
+            <th>Valor da Consulta</th>
+            <th>Gasto por Consulta</th>
+            <th>Quantidade de Exames</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for consulta in consultas %}
+            <tr>
+                <td>{{ consulta.nome_medico }}</td>
+                <td>{{ consulta.numero_guia_consulta }}</td>
+                <td>{{ consulta.data_consulta|date:"d/m/Y" }}</td>
+                <td>{{ consulta.valor_consulta|floatformat:2 }}</td>
+                <td>{{ consulta.gasto_consulta|floatformat:2 }}</td>
+                <td>{{ consulta.exames.all|length }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if consultas.has_other_pages %}
+    <ul class="pagination">
+        {% if consultas.has_previous %}
+        <li><a href="?page={{ consultas.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in consultas.paginator.page_range %}
+        {% if consultas.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if consultas.has_next %}
+        <li><a href="?page={{ consultas.next_page_number }}">&raquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
